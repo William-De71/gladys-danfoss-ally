@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
+  <!-- Cover of the Danfoss Ally integration for Gladys Assistant
+       (illustration, no Danfoss logo). Built into cover.jpg by
+       scripts/build-cover.sh. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdf1ea"/>
+      <stop offset="1" stop-color="#eef2f8"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f5f7fb"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bcd9f2"/>
+      <stop offset="1" stop-color="#e4f0fa"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.7" r="0.5">
+      <stop offset="0" stop-color="#f29d38" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#f29d38" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+
+  <!-- floor -->
+  <rect y="440" width="800" height="94" fill="#e7dccf"/>
+  <g stroke="#d8cab9" stroke-width="3">
+    <path d="M0 470 H800"/>
+    <path d="M0 502 H800"/>
+  </g>
+
+  <!-- window, slightly open -->
+  <g transform="translate(70 130)">
+    <rect width="200" height="230" rx="8" fill="#ffffff" stroke="#c9d3de" stroke-width="6"/>
+    <rect x="14" y="14" width="80" height="202" fill="url(#sky)"/>
+    <path d="M106 14 L 186 28 L 186 230 L 106 216 Z" fill="url(#sky)" stroke="#c9d3de" stroke-width="4"/>
+    <path d="M30 60 q 20 -16 40 0" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M120 80 q 18 -14 36 0" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- cold air -->
+    <g stroke="#5b9bd5" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8">
+      <path d="M200 120 q 24 -10 48 0 t 48 0"/>
+      <path d="M200 150 q 24 -10 48 0 t 36 0"/>
+    </g>
+  </g>
+
+  <!-- radiator with its heat -->
+  <ellipse cx="445" cy="330" rx="200" ry="120" fill="url(#warm)"/>
+  <g transform="translate(320 330)">
+    <rect width="250" height="110" rx="10" fill="#ffffff" stroke="#c9d3de" stroke-width="4"/>
+    <g fill="#eef2f6" stroke="#c9d3de" stroke-width="3">
+      <rect x="14" y="10" width="26" height="90" rx="12"/>
+      <rect x="52" y="10" width="26" height="90" rx="12"/>
+      <rect x="90" y="10" width="26" height="90" rx="12"/>
+      <rect x="128" y="10" width="26" height="90" rx="12"/>
+      <rect x="166" y="10" width="26" height="90" rx="12"/>
+      <rect x="204" y="10" width="26" height="90" rx="12"/>
+    </g>
+    <!-- valve and thermostatic head -->
+    <rect x="250" y="62" width="34" height="16" rx="4" fill="#9aa6b2"/>
+    <rect x="276" y="18" width="62" height="104" rx="22" fill="#ffffff" stroke="#9aa6b2" stroke-width="4"/>
+    <rect x="290" y="40" width="34" height="22" rx="5" fill="#1f2d3d"/>
+    <text x="307" y="57" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#7fe3a6">21</text>
+    <circle cx="307" cy="92" r="8" fill="#e2000f" opacity="0.85"/>
+  </g>
+  <g stroke="#f29d38" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9">
+    <path d="M370 312 q -10 -16 0 -32 t 0 -32"/>
+    <path d="M440 312 q -10 -16 0 -32 t 0 -32"/>
+    <path d="M510 312 q -10 -16 0 -32 t 0 -32"/>
+  </g>
+
+  <!-- phone-like card: the room -->
+  <g transform="translate(470 120)">
+    <rect width="270" height="150" rx="20" fill="url(#card)" stroke="#d6dde6" stroke-width="2"/>
+    <path d="M38 64 L 62 42 L 86 64 V 92 H 38 Z" fill="none" stroke="#2a5ea8" stroke-width="6" stroke-linejoin="round"/>
+    <text x="106" y="76" font-family="DejaVu Sans, Arial, sans-serif" font-size="44" font-weight="700" fill="#1f2d3d">21 °C</text>
+    <rect x="38" y="106" width="104" height="30" rx="15" fill="#e3eefb"/>
+    <text x="90" y="127" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#2a5ea8">Home</text>
+    <rect x="152" y="106" width="96" height="30" rx="15" fill="#fdecd8"/>
+    <text x="200" y="127" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#b4610f">19.8 °C</text>
+  </g>
+
+  <!-- title -->
+  <text x="400" y="62" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="44" font-weight="700" fill="#1f2d3d">Danfoss Ally</text>
+  <text x="400" y="98" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" fill="#3b4a5a">for Gladys Assistant</text>
+</svg>

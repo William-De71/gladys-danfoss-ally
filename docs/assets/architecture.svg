@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="300" viewBox="0 0 1100 300">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#57606a"/></marker></defs>
+  <rect width="1100" height="300" fill="#ffffff"/>
+  <g font-family="DejaVu Sans, Arial, sans-serif" text-anchor="middle">
+    <rect x="20" y="70" width="200" height="150" rx="14" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="2"/>
+    <text x="120" y="110" font-size="19" font-weight="bold" fill="#1f2328">Gladys Assistant</text>
+    <text x="120" y="140" font-size="14" fill="#57606a">devices, scenes,</text>
+    <text x="120" y="160" font-size="14" fill="#57606a">dashboard widgets</text>
+    <rect x="320" y="70" width="200" height="150" rx="14" fill="#eef8f0" stroke="#1a7f37" stroke-width="2"/>
+    <text x="420" y="100" font-size="15" font-weight="bold" fill="#1f2328">gladys-danfoss-ally</text>
+    <text x="420" y="125" font-size="14" fill="#57606a">Docker container</text>
+    <text x="420" y="145" font-size="14" fill="#57606a">clock: 1-10 min,</text>
+    <text x="420" y="165" font-size="14" fill="#57606a">quick readings after</text>
+    <text x="420" y="185" font-size="14" fill="#57606a">a command; /data</text>
+    <rect x="620" y="70" width="200" height="150" rx="14" fill="#fdecec" stroke="#c4161c" stroke-width="2"/>
+    <text x="720" y="105" font-size="17" font-weight="bold" fill="#1f2328">Danfoss Ally API</text>
+    <text x="720" y="135" font-size="14" fill="#57606a">api.danfoss.com</text>
+    <text x="720" y="155" font-size="14" fill="#57606a">OAuth2 token,</text>
+    <text x="720" y="175" font-size="14" fill="#57606a">/ally/devices</text>
+    <rect x="920" y="70" width="160" height="150" rx="14" fill="#fff6e8" stroke="#bf8700" stroke-width="2"/>
+    <text x="1000" y="105" font-size="16" font-weight="bold" fill="#1f2328">Your home</text>
+    <text x="1000" y="135" font-size="14" fill="#57606a">Ally gateway,</text>
+    <text x="1000" y="155" font-size="14" fill="#57606a">radiator heads,</text>
+    <text x="1000" y="175" font-size="14" fill="#57606a">sensors, Icon</text>
+    <path d="M225 125 H315" stroke="#57606a" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+    <text x="270" y="105" font-size="12" fill="#57606a">REST</text>
+    <text x="270" y="150" font-size="12" fill="#57606a">+ WebSocket</text>
+    <text x="270" y="245" font-size="12" fill="#57606a">/api/integration/v1/*</text>
+    <path d="M525 125 H615" stroke="#57606a" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+    <text x="570" y="105" font-size="12" fill="#57606a">HTTPS</text>
+    <text x="570" y="150" font-size="12" fill="#57606a">key + secret</text>
+    <path d="M825 125 H915" stroke="#57606a" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+    <text x="870" y="105" font-size="12" fill="#57606a">cloud</text>
+    <text x="870" y="150" font-size="12" fill="#57606a">minutes</text>
+    <text x="550" y="280" font-size="13" fill="#57606a">Cloud transport: Gladys never talks to the devices directly; the Danfoss cloud relays every change within a few minutes. Illustration.</text>
+  </g>
+</svg>

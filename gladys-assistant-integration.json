@@ -1,0 +1,1310 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "Danfoss Ally",
+  "description": {
+    "en": "Danfoss Ally radiator thermostats and Icon rooms: setpoint, modes, window, battery, scenes.",
+    "fr": "Têtes Danfoss Ally et thermostats Icon : consigne, modes, fenêtre, pile, scènes.",
+    "de": "Danfoss-Ally-Heizkörperthermostate und Icon: Solltemperatur, Modi, Fenster, Batterie, Szenen.",
+    "es": "Cabezales Danfoss Ally y termostatos Icon: consigna, modos, ventana, pila, escenas."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-danfoss-ally:0.1.0",
+  "gladys_version": ">=5.3.0",
+  "categories": ["climate"],
+  "keywords": [
+    "danfoss",
+    "ally",
+    "icon",
+    "etrv",
+    "radiator",
+    "thermostat",
+    "tête thermostatique",
+    "heizkörperthermostat",
+    "cabezal termostático",
+    "chauffage"
+  ],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-danfoss-ally/main/cover.jpg",
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Danfoss Ally",
+        "fr": "Danfoss Ally",
+        "de": "Danfoss Ally",
+        "es": "Danfoss Ally"
+      },
+      "description": {
+        "en": "How to connect:\n1. Set up your thermostats in the Danfoss Ally app, with an e-mail account.\n2. On developer.danfoss.com, create an account with exactly the same e-mail address (case matters).\n3. In “Apps”, create an app, enable the “Danfoss Ally API” for it, and copy its Consumer Key and Consumer Secret below.\n4. In the Discover tab, add your rooms.\nThe integration reads the Danfoss cloud: a change reaches the devices, and a change made on them reaches Gladys, within a few minutes.",
+        "fr": "Pour se connecter :\n1. Installez vos thermostats dans l’application Danfoss Ally, avec un compte e-mail.\n2. Sur developer.danfoss.com, créez un compte avec exactement la même adresse e-mail (majuscules comprises).\n3. Dans « Apps », créez une application, activez-y l’« API Danfoss Ally », et copiez ci-dessous sa Consumer Key et son Consumer Secret.\n4. Dans l’onglet Découverte, ajoutez vos pièces.\nL’intégration passe par le cloud Danfoss : un changement atteint les appareils, et un changement fait sur eux atteint Gladys, en quelques minutes.",
+        "de": "So verbinden Sie sich:\n1. Richten Sie Ihre Thermostate in der Danfoss-Ally-App mit einem E-Mail-Konto ein.\n2. Legen Sie auf developer.danfoss.com ein Konto mit genau derselben E-Mail-Adresse an (Groß-/Kleinschreibung beachten).\n3. Erstellen Sie unter „Apps“ eine App, aktivieren Sie dort die „Danfoss Ally API“ und kopieren Sie Consumer Key und Consumer Secret unten hinein.\n4. Fügen Sie im Reiter Entdecken Ihre Räume hinzu.\nDie Integration nutzt die Danfoss-Cloud: Eine Änderung erreicht die Geräte, und eine Änderung an den Geräten erreicht Gladys, innerhalb weniger Minuten.",
+        "es": "Cómo conectarse:\n1. Configure sus termostatos en la app Danfoss Ally, con una cuenta de correo.\n2. En developer.danfoss.com, cree una cuenta con exactamente el mismo correo electrónico (mayúsculas incluidas).\n3. En «Apps», cree una aplicación, active en ella la «Danfoss Ally API» y copie abajo su Consumer Key y su Consumer Secret.\n4. En la pestaña Descubrir, añada sus estancias.\nLa integración pasa por la nube de Danfoss: un cambio llega a los dispositivos, y un cambio hecho en ellos llega a Gladys, en pocos minutos."
+      },
+      "links": [
+        {
+          "url": "https://developer.danfoss.com",
+          "label": {
+            "en": "Danfoss developer portal",
+            "fr": "Portail développeur Danfoss",
+            "de": "Danfoss-Entwicklerportal",
+            "es": "Portal de desarrolladores de Danfoss"
+          }
+        },
+        {
+          "url": "https://developer.danfoss.com/get-started",
+          "label": {
+            "en": "Portal: get started",
+            "fr": "Portail : premiers pas",
+            "de": "Portal: Erste Schritte",
+            "es": "Portal: primeros pasos"
+          }
+        },
+        {
+          "url": "https://github.com/William-De71/gladys-danfoss-ally/blob/main/docs/fr.md",
+          "label": {
+            "en": "Documentation (French)",
+            "fr": "Documentation",
+            "de": "Dokumentation (Französisch)",
+            "es": "Documentación (francés)"
+          }
+        },
+        {
+          "url": "https://github.com/William-De71/gladys-danfoss-ally/blob/main/docs/en.md",
+          "label": {
+            "en": "Documentation",
+            "fr": "Documentation (anglais)",
+            "de": "Dokumentation (Englisch)",
+            "es": "Documentación (inglés)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "consumer_key",
+      "type": "string",
+      "required": true,
+      "label": {
+        "en": "Consumer Key",
+        "fr": "Consumer Key",
+        "de": "Consumer Key",
+        "es": "Consumer Key"
+      },
+      "description": {
+        "en": "The key of your app on developer.danfoss.com (Apps → your app → Keys).",
+        "fr": "La clé de votre application sur developer.danfoss.com (Apps → votre application → Keys).",
+        "de": "Der Schlüssel Ihrer App auf developer.danfoss.com (Apps → Ihre App → Keys).",
+        "es": "La clave de su aplicación en developer.danfoss.com (Apps → su aplicación → Keys)."
+      },
+      "placeholder": {
+        "en": "Consumer Key",
+        "fr": "Consumer Key",
+        "de": "Consumer Key",
+        "es": "Consumer Key"
+      }
+    },
+    {
+      "key": "consumer_secret",
+      "type": "secret",
+      "required": true,
+      "label": {
+        "en": "Consumer Secret",
+        "fr": "Consumer Secret",
+        "de": "Consumer Secret",
+        "es": "Consumer Secret"
+      },
+      "description": {
+        "en": "The secret of the same app. Sent to Danfoss only, never shown again.",
+        "fr": "Le secret de la même application. Envoyé à Danfoss uniquement, jamais réaffiché.",
+        "de": "Das Geheimnis derselben App. Wird nur an Danfoss gesendet und nie wieder angezeigt.",
+        "es": "El secreto de la misma aplicación. Solo se envía a Danfoss y nunca se vuelve a mostrar."
+      },
+      "placeholder": {
+        "en": "Consumer Secret",
+        "fr": "Consumer Secret",
+        "de": "Consumer Secret",
+        "es": "Consumer Secret"
+      }
+    },
+    {
+      "key": "refresh_minutes",
+      "type": "select",
+      "label": {
+        "en": "Reading interval",
+        "fr": "Intervalle de relevé",
+        "de": "Abfrageintervall",
+        "es": "Intervalo de lectura"
+      },
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "en": "Every 1 min",
+            "fr": "Toutes les 1 min",
+            "de": "Alle 1 Min.",
+            "es": "Cada 1 min"
+          }
+        },
+        {
+          "value": "2",
+          "label": {
+            "en": "Every 2 min",
+            "fr": "Toutes les 2 min",
+            "de": "Alle 2 Min.",
+            "es": "Cada 2 min"
+          }
+        },
+        {
+          "value": "5",
+          "label": {
+            "en": "Every 5 min",
+            "fr": "Toutes les 5 min",
+            "de": "Alle 5 Min.",
+            "es": "Cada 5 min"
+          }
+        },
+        {
+          "value": "10",
+          "label": {
+            "en": "Every 10 min",
+            "fr": "Toutes les 10 min",
+            "de": "Alle 10 Min.",
+            "es": "Cada 10 min"
+          }
+        }
+      ],
+      "default": "2",
+      "description": {
+        "en": "One request reads the whole home. Danfoss publishes no quota but slows down abusive clients: 2 minutes is a good balance.",
+        "fr": "Une seule requête relève toute la maison. Danfoss ne publie pas de quota mais ralentit les clients trop bavards : 2 minutes est un bon compromis.",
+        "de": "Eine Anfrage liest das ganze Zuhause. Danfoss nennt kein Kontingent, bremst aber zu häufige Anfragen: 2 Minuten sind ein guter Kompromiss.",
+        "es": "Una sola petición lee toda la casa. Danfoss no publica cuota pero frena a los clientes demasiado insistentes: 2 minutos es un buen equilibrio."
+      }
+    },
+    {
+      "key": "battery_threshold",
+      "type": "number",
+      "min": 5,
+      "max": 50,
+      "default": 20,
+      "label": {
+        "en": "Low battery threshold (%)",
+        "fr": "Seuil de pile faible (%)",
+        "de": "Schwelle schwache Batterie (%)",
+        "es": "Umbral de pila baja (%)"
+      },
+      "placeholder": {
+        "en": "20",
+        "fr": "20",
+        "de": "20",
+        "es": "20"
+      },
+      "description": {
+        "en": "The “Battery low” scene trigger fires when a battery goes under this level (5 to 50).",
+        "fr": "Le déclencheur de scène « Pile faible » se déclenche quand une pile passe sous ce niveau (5 à 50).",
+        "de": "Der Szenenauslöser „Batterie schwach“ löst aus, wenn eine Batterie unter diesen Wert fällt (5 bis 50).",
+        "es": "El disparador de escena «Pila baja» se activa cuando una pila baja de este nivel (5 a 50)."
+      }
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language of the device texts",
+        "fr": "Langue des textes des appareils",
+        "de": "Sprache der Gerätetexte",
+        "es": "Idioma de los textos de los dispositivos"
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en": "Automatic",
+            "fr": "Automatique",
+            "de": "Automatisch",
+            "es": "Automático"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ],
+      "default": "auto",
+      "description": {
+        "en": "Names of the features and messages of the button below. Automatic: the language of the dashboard once a widget is shown.",
+        "fr": "Noms des fonctionnalités et messages du bouton ci-dessous. Automatique : la langue du tableau de bord dès qu’un widget est affiché.",
+        "de": "Namen der Funktionen und Meldungen der Schaltfläche unten. Automatisch: die Sprache des Dashboards, sobald ein Widget angezeigt wird.",
+        "es": "Nombres de las funciones y mensajes del botón de abajo. Automático: el idioma del panel en cuanto se muestra un widget."
+      }
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Test the connection",
+        "fr": "Tester la connexion",
+        "de": "Verbindung testen",
+        "es": "Probar la conexión"
+      },
+      "description": {
+        "en": "Reads the devices of the account now and lists them, with the features each one offers.",
+        "fr": "Relève maintenant les appareils du compte et les liste, avec les fonctionnalités de chacun.",
+        "de": "Liest jetzt die Geräte des Kontos und listet sie mit ihren Funktionen auf.",
+        "es": "Lee ahora los dispositivos de la cuenta y los lista, con las funciones de cada uno."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "rooms",
+      "icon": "thermometer",
+      "label": {
+        "en": "Heating rooms",
+        "fr": "Pièces chauffées",
+        "de": "Beheizte Räume",
+        "es": "Estancias"
+      },
+      "description": {
+        "en": "Each room: temperature, setpoint, mode, window, battery; Home and Away modes for the whole home.",
+        "fr": "Chaque pièce : température, consigne, mode, fenêtre, pile ; modes Maison et Absent pour tout.",
+        "de": "Jeder Raum: Temperatur, Sollwert, Modus, Fenster, Batterie; Modi Zuhause/Abwesend für alles.",
+        "es": "Cada estancia: temperatura, consigna, modo, ventana, pila; modos En casa y Ausente para todo."
+      },
+      "settings": [
+        {
+          "key": "devices",
+          "type": "multi_select",
+          "source": "devices",
+          "label": {
+            "en": "Rooms",
+            "fr": "Pièces",
+            "de": "Räume",
+            "es": "Estancias"
+          },
+          "description": {
+            "en": "Empty: every device (8 at most).",
+            "fr": "Vide : tous les appareils (8 au plus).",
+            "de": "Leer: alle Geräte (höchstens 8).",
+            "es": "Vacío: todos los dispositivos (8 como máximo)."
+          }
+        }
+      ],
+      "action_timeout_seconds": 90
+    },
+    {
+      "key": "status",
+      "icon": "cloud",
+      "label": {
+        "en": "Danfoss Ally",
+        "fr": "Danfoss Ally",
+        "de": "Danfoss Ally",
+        "es": "Danfoss Ally"
+      },
+      "description": {
+        "en": "Connection to the Danfoss Ally API, devices online, requests of the last hour.",
+        "fr": "Connexion à l’API Danfoss Ally, appareils en ligne, requêtes de la dernière heure.",
+        "de": "Verbindung zur Danfoss-Ally-API, Geräte online, Anfragen der letzten Stunde.",
+        "es": "Conexión a la API Danfoss Ally, dispositivos en línea, peticiones de la última hora."
+      },
+      "action_timeout_seconds": 60
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "window_opened",
+      "label": {
+        "en": "A window is opened",
+        "fr": "Une fenêtre est ouverte",
+        "de": "Ein Fenster wird geöffnet",
+        "es": "Se abre una ventana"
+      },
+      "description": {
+        "en": "A radiator thermostat detects an open window (temperature drop), seen at the next reading.",
+        "fr": "Une tête thermostatique détecte une fenêtre ouverte (chute de température), vu au relevé suivant.",
+        "de": "Ein Heizkörperthermostat erkennt ein offenes Fenster (Temperatursturz), sichtbar bei der nächsten Abfrage.",
+        "es": "Un cabezal detecta una ventana abierta (caída de temperatura), visto en la siguiente lectura."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every device.",
+            "fr": "Vide : tous les appareils.",
+            "de": "Leer: alle Geräte.",
+            "es": "Vacío: todos los dispositivos."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "temperature",
+          "type": "number",
+          "label": {
+            "en": "Room temperature (°C)",
+            "fr": "Température ambiante (°C)",
+            "de": "Raumtemperatur (°C)",
+            "es": "Temperatura ambiente (°C)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "window_closed",
+      "label": {
+        "en": "A window is closed",
+        "fr": "Une fenêtre est fermée",
+        "de": "Ein Fenster wird geschlossen",
+        "es": "Se cierra una ventana"
+      },
+      "description": {
+        "en": "The thermostat no longer sees the window open.",
+        "fr": "Le thermostat ne voit plus la fenêtre ouverte.",
+        "de": "Das Thermostat erkennt das Fenster nicht mehr als offen.",
+        "es": "El termostato ya no ve la ventana abierta."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every device.",
+            "fr": "Vide : tous les appareils.",
+            "de": "Leer: alle Geräte.",
+            "es": "Vacío: todos los dispositivos."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "temperature",
+          "type": "number",
+          "label": {
+            "en": "Room temperature (°C)",
+            "fr": "Température ambiante (°C)",
+            "de": "Raumtemperatur (°C)",
+            "es": "Temperatura ambiente (°C)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "battery_low",
+      "label": {
+        "en": "A battery is low",
+        "fr": "Une pile est faible",
+        "de": "Eine Batterie ist schwach",
+        "es": "Una pila está baja"
+      },
+      "description": {
+        "en": "A battery goes under the threshold of the configuration: once, until it is replaced.",
+        "fr": "Une pile passe sous le seuil de la configuration : une fois, jusqu’à son remplacement.",
+        "de": "Eine Batterie fällt unter die Schwelle der Konfiguration: einmal, bis sie ersetzt wird.",
+        "es": "Una pila baja del umbral de la configuración: una vez, hasta que se cambie."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every device.",
+            "fr": "Vide : tous les appareils.",
+            "de": "Leer: alle Geräte.",
+            "es": "Vacío: todos los dispositivos."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "battery",
+          "type": "number",
+          "label": {
+            "en": "Battery (%)",
+            "fr": "Pile (%)",
+            "de": "Batterie (%)",
+            "es": "Pila (%)"
+          }
+        },
+        {
+          "key": "threshold",
+          "type": "number",
+          "label": {
+            "en": "Threshold (%)",
+            "fr": "Seuil (%)",
+            "de": "Schwelle (%)",
+            "es": "Umbral (%)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "device_offline",
+      "label": {
+        "en": "A device goes offline",
+        "fr": "Un appareil passe hors ligne",
+        "de": "Ein Gerät geht offline",
+        "es": "Un dispositivo se desconecta"
+      },
+      "description": {
+        "en": "Danfoss reports a device offline (no battery, out of range of the gateway, gateway down).",
+        "fr": "Danfoss signale un appareil hors ligne (pile vide, hors de portée de la passerelle, passerelle éteinte).",
+        "de": "Danfoss meldet ein Gerät offline (Batterie leer, außer Reichweite des Gateways, Gateway aus).",
+        "es": "Danfoss indica un dispositivo sin conexión (sin pila, fuera del alcance de la pasarela, pasarela apagada)."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every device.",
+            "fr": "Vide : tous les appareils.",
+            "de": "Leer: alle Geräte.",
+            "es": "Vacío: todos los dispositivos."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "model",
+          "type": "string",
+          "label": {
+            "en": "Model",
+            "fr": "Modèle",
+            "de": "Modell",
+            "es": "Modelo"
+          }
+        }
+      ]
+    },
+    {
+      "key": "device_online",
+      "label": {
+        "en": "A device is back online",
+        "fr": "Un appareil est de retour",
+        "de": "Ein Gerät ist wieder online",
+        "es": "Un dispositivo vuelve a conectarse"
+      },
+      "description": {
+        "en": "A device Danfoss reported offline answers again.",
+        "fr": "Un appareil signalé hors ligne par Danfoss répond de nouveau.",
+        "de": "Ein von Danfoss als offline gemeldetes Gerät antwortet wieder.",
+        "es": "Un dispositivo que Danfoss indicaba sin conexión responde de nuevo."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every device.",
+            "fr": "Vide : tous les appareils.",
+            "de": "Leer: alle Geräte.",
+            "es": "Vacío: todos los dispositivos."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "model",
+          "type": "string",
+          "label": {
+            "en": "Model",
+            "fr": "Modèle",
+            "de": "Modell",
+            "es": "Modelo"
+          }
+        }
+      ]
+    },
+    {
+      "key": "fault_reported",
+      "label": {
+        "en": "A device reports a fault",
+        "fr": "Un appareil signale un défaut",
+        "de": "Ein Gerät meldet eine Störung",
+        "es": "Un dispositivo indica un fallo"
+      },
+      "description": {
+        "en": "A device reports a fault or an error code (valve blocked, mounting, sensor…), once per new code.",
+        "fr": "Un appareil signale un défaut ou un code d’erreur (vanne bloquée, montage, sonde…), une fois par nouveau code.",
+        "de": "Ein Gerät meldet eine Störung oder einen Fehlercode (Ventil blockiert, Montage, Sensor…), einmal je neuem Code.",
+        "es": "Un dispositivo indica un fallo o un código de error (válvula bloqueada, montaje, sonda…), una vez por código nuevo."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every device.",
+            "fr": "Vide : tous les appareils.",
+            "de": "Leer: alle Geräte.",
+            "es": "Vacío: todos los dispositivos."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "fault",
+          "type": "string",
+          "label": {
+            "en": "Fault code",
+            "fr": "Code de défaut",
+            "de": "Störungscode",
+            "es": "Código de fallo"
+          }
+        },
+        {
+          "key": "error_code",
+          "type": "string",
+          "label": {
+            "en": "Error code",
+            "fr": "Code d’erreur",
+            "de": "Fehlercode",
+            "es": "Código de error"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Fault and error code",
+            "fr": "Défaut et code d’erreur",
+            "de": "Störung und Fehlercode",
+            "es": "Fallo y código de error"
+          }
+        }
+      ]
+    },
+    {
+      "key": "mode_changed",
+      "label": {
+        "en": "The mode changes",
+        "fr": "Le mode change",
+        "de": "Der Modus ändert sich",
+        "es": "El modo cambia"
+      },
+      "description": {
+        "en": "The mode changed in the Danfoss Ally app, on the device or by its schedule — never by Gladys itself.",
+        "fr": "Le mode a changé dans l’app Danfoss Ally, sur l’appareil ou par son programme — jamais par Gladys elle-même.",
+        "de": "Der Modus wurde in der Danfoss-Ally-App, am Gerät oder durch den Zeitplan geändert — nie durch Gladys selbst.",
+        "es": "El modo cambió en la app Danfoss Ally, en el dispositivo o por su programa — nunca por la propia Gladys."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every device.",
+            "fr": "Vide : tous les appareils.",
+            "de": "Leer: alle Geräte.",
+            "es": "Vacío: todos los dispositivos."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "multi_select",
+          "label": {
+            "en": "New mode",
+            "fr": "Nouveau mode",
+            "de": "Neuer Modus",
+            "es": "Nuevo modo"
+          },
+          "options": [
+            {
+              "value": "at_home",
+              "label": {
+                "en": "Home",
+                "fr": "Maison",
+                "de": "Zuhause",
+                "es": "En casa"
+              }
+            },
+            {
+              "value": "leaving_home",
+              "label": {
+                "en": "Away",
+                "fr": "Absent",
+                "de": "Abwesend",
+                "es": "Ausente"
+              }
+            },
+            {
+              "value": "pause",
+              "label": {
+                "en": "Pause (frost protection)",
+                "fr": "Pause (hors-gel)",
+                "de": "Pause (Frostschutz)",
+                "es": "Pausa (antihielo)"
+              }
+            },
+            {
+              "value": "manual",
+              "label": {
+                "en": "Manual",
+                "fr": "Manuel",
+                "de": "Manuell",
+                "es": "Manual"
+              }
+            },
+            {
+              "value": "holiday",
+              "label": {
+                "en": "Holiday",
+                "fr": "Vacances",
+                "de": "Urlaub",
+                "es": "Vacaciones"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: every mode.",
+            "fr": "Vide : tous les modes.",
+            "de": "Leer: alle Modi.",
+            "es": "Vacío: todos los modos."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device",
+          "type": "string",
+          "label": {
+            "en": "Device (external id)",
+            "fr": "Appareil (identifiant externe)",
+            "de": "Gerät (externe ID)",
+            "es": "Dispositivo (id externo)"
+          }
+        },
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Device name",
+            "fr": "Nom de l’appareil",
+            "de": "Gerätename",
+            "es": "Nombre del dispositivo"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "New mode (at_home, leaving_home…)",
+            "fr": "Nouveau mode (at_home, leaving_home…)",
+            "de": "Neuer Modus (at_home, leaving_home…)",
+            "es": "Nuevo modo (at_home, leaving_home…)"
+          }
+        },
+        {
+          "key": "previous_mode",
+          "type": "string",
+          "label": {
+            "en": "Previous mode",
+            "fr": "Mode précédent",
+            "de": "Vorheriger Modus",
+            "es": "Modo anterior"
+          }
+        },
+        {
+          "key": "target_temperature",
+          "type": "number",
+          "label": {
+            "en": "Setpoint (°C)",
+            "fr": "Consigne (°C)",
+            "de": "Solltemperatur (°C)",
+            "es": "Consigna (°C)"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "set_mode",
+      "timeout_seconds": 90,
+      "label": {
+        "en": "Change the heating mode",
+        "fr": "Changer le mode de chauffage",
+        "de": "Heizmodus ändern",
+        "es": "Cambiar el modo de calefacción"
+      },
+      "description": {
+        "en": "Home, away, pause, manual or holiday, on one thermostat or on every one of them.",
+        "fr": "Maison, absent, pause, manuel ou vacances, sur un thermostat ou sur tous.",
+        "de": "Zuhause, Abwesend, Pause, Manuell oder Urlaub, für ein Thermostat oder für alle.",
+        "es": "En casa, ausente, pausa, manual o vacaciones, en un termostato o en todos."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "description": {
+            "en": "Empty: every thermostat.",
+            "fr": "Vide : tous les thermostats.",
+            "de": "Leer: alle Thermostate.",
+            "es": "Vacío: todos los termostatos."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "required": true,
+          "label": {
+            "en": "Mode",
+            "fr": "Mode",
+            "de": "Modus",
+            "es": "Modo"
+          },
+          "options": [
+            {
+              "value": "at_home",
+              "label": {
+                "en": "Home",
+                "fr": "Maison",
+                "de": "Zuhause",
+                "es": "En casa"
+              }
+            },
+            {
+              "value": "leaving_home",
+              "label": {
+                "en": "Away",
+                "fr": "Absent",
+                "de": "Abwesend",
+                "es": "Ausente"
+              }
+            },
+            {
+              "value": "pause",
+              "label": {
+                "en": "Pause (frost protection)",
+                "fr": "Pause (hors-gel)",
+                "de": "Pause (Frostschutz)",
+                "es": "Pausa (antihielo)"
+              }
+            },
+            {
+              "value": "manual",
+              "label": {
+                "en": "Manual",
+                "fr": "Manuel",
+                "de": "Manuell",
+                "es": "Manual"
+              }
+            },
+            {
+              "value": "holiday",
+              "label": {
+                "en": "Holiday",
+                "fr": "Vacances",
+                "de": "Urlaub",
+                "es": "Vacaciones"
+              }
+            }
+          ],
+          "default": "at_home"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": {
+            "en": "Thermostats switched",
+            "fr": "Thermostats changés",
+            "de": "Umgeschaltete Thermostate",
+            "es": "Termostatos cambiados"
+          }
+        },
+        {
+          "key": "failed",
+          "type": "number",
+          "label": {
+            "en": "Failed or offline",
+            "fr": "En échec ou hors ligne",
+            "de": "Fehlgeschlagen oder offline",
+            "es": "Con error o sin conexión"
+          }
+        }
+      ]
+    },
+    {
+      "key": "set_mode_temperature",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Set the setpoint of a mode",
+        "fr": "Régler la consigne d’un mode",
+        "de": "Solltemperatur eines Modus einstellen",
+        "es": "Ajustar la consigna de un modo"
+      },
+      "description": {
+        "en": "The temperature of a mode (home, away…) or of the current one, 5 to 35 °C by 0.5 °C, without changing the mode.",
+        "fr": "La température d’un mode (maison, absent…) ou du mode actuel, de 5 à 35 °C par 0,5 °C, sans changer de mode.",
+        "de": "Die Temperatur eines Modus (Zuhause, Abwesend…) oder des aktuellen, 5 bis 35 °C in 0,5-°C-Schritten, ohne den Modus zu wechseln.",
+        "es": "La temperatura de un modo (en casa, ausente…) o del actual, de 5 a 35 °C cada 0,5 °C, sin cambiar de modo."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "required": true,
+          "description": {
+            "en": "A thermostat added in Gladys.",
+            "fr": "Un thermostat ajouté dans Gladys.",
+            "de": "Ein in Gladys hinzugefügtes Thermostat.",
+            "es": "Un termostato añadido en Gladys."
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "label": {
+            "en": "Mode",
+            "fr": "Mode",
+            "de": "Modus",
+            "es": "Modo"
+          },
+          "options": [
+            {
+              "value": "current",
+              "label": {
+                "en": "Current mode",
+                "fr": "Mode actuel",
+                "de": "Aktueller Modus",
+                "es": "Modo actual"
+              }
+            },
+            {
+              "value": "at_home",
+              "label": {
+                "en": "Home",
+                "fr": "Maison",
+                "de": "Zuhause",
+                "es": "En casa"
+              }
+            },
+            {
+              "value": "leaving_home",
+              "label": {
+                "en": "Away",
+                "fr": "Absent",
+                "de": "Abwesend",
+                "es": "Ausente"
+              }
+            },
+            {
+              "value": "pause",
+              "label": {
+                "en": "Pause (frost protection)",
+                "fr": "Pause (hors-gel)",
+                "de": "Pause (Frostschutz)",
+                "es": "Pausa (antihielo)"
+              }
+            },
+            {
+              "value": "manual",
+              "label": {
+                "en": "Manual",
+                "fr": "Manuel",
+                "de": "Manuell",
+                "es": "Manual"
+              }
+            },
+            {
+              "value": "holiday",
+              "label": {
+                "en": "Holiday",
+                "fr": "Vacances",
+                "de": "Urlaub",
+                "es": "Vacaciones"
+              }
+            }
+          ],
+          "default": "current"
+        },
+        {
+          "key": "temperature",
+          "type": "number",
+          "required": true,
+          "min": 5,
+          "max": 35,
+          "label": {
+            "en": "Temperature (°C)",
+            "fr": "Température (°C)",
+            "de": "Temperatur (°C)",
+            "es": "Temperatura (°C)"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "temperature",
+          "type": "number",
+          "label": {
+            "en": "Setpoint written (°C)",
+            "fr": "Consigne écrite (°C)",
+            "de": "Geschriebene Solltemperatur (°C)",
+            "es": "Consigna escrita (°C)"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "Mode",
+            "fr": "Mode",
+            "de": "Modus",
+            "es": "Modo"
+          }
+        }
+      ]
+    },
+    {
+      "key": "set_external_temperature",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Send a room temperature",
+        "fr": "Envoyer une température de pièce",
+        "de": "Raumtemperatur senden",
+        "es": "Enviar una temperatura de estancia"
+      },
+      "description": {
+        "en": "For a covered radiator: a radiator thermostat regulates on the temperature of another sensor. At most every 5 minutes, at least every 30 minutes.",
+        "fr": "Pour un radiateur couvert : la tête régule sur la température d’un autre capteur. Au plus toutes les 5 minutes, au moins toutes les 30 minutes.",
+        "de": "Für einen verdeckten Heizkörper: Das Thermostat regelt nach der Temperatur eines anderen Sensors. Höchstens alle 5, mindestens alle 30 Minuten.",
+        "es": "Para un radiador cubierto: el cabezal regula con la temperatura de otro sensor. Como mucho cada 5 minutos, al menos cada 30 minutos."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Device",
+            "fr": "Appareil",
+            "de": "Gerät",
+            "es": "Dispositivo"
+          },
+          "required": true,
+          "description": {
+            "en": "A Danfoss Ally radiator thermostat.",
+            "fr": "Une tête thermostatique Danfoss Ally.",
+            "de": "Ein Danfoss-Ally-Heizkörperthermostat.",
+            "es": "Un cabezal termostático Danfoss Ally."
+          }
+        },
+        {
+          "key": "temperature",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Temperature (°C)",
+            "fr": "Température (°C)",
+            "de": "Temperatur (°C)",
+            "es": "Temperatura (°C)"
+          },
+          "placeholder": {
+            "en": "21.5 or a variable",
+            "fr": "21,5 ou une variable",
+            "de": "21,5 oder eine Variable",
+            "es": "21,5 o una variable"
+          },
+          "description": {
+            "en": "A number, or a scene variable such as the value of a sensor; “off” stops the external temperature.",
+            "fr": "Un nombre, ou une variable de scène comme la valeur d’un capteur ; « off » arrête la température externe.",
+            "de": "Eine Zahl oder eine Szenenvariable wie der Wert eines Sensors; „off“ beendet die externe Temperatur.",
+            "es": "Un número, o una variable de escena como el valor de un sensor; «off» detiene la temperatura externa."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "sent",
+          "type": "boolean",
+          "label": {
+            "en": "Sent (false: less than 5 min ago)",
+            "fr": "Envoyée (false : il y a moins de 5 min)",
+            "de": "Gesendet (false: vor weniger als 5 Min.)",
+            "es": "Enviada (false: hace menos de 5 min)"
+          }
+        },
+        {
+          "key": "temperature",
+          "type": "number",
+          "label": {
+            "en": "Temperature (°C)",
+            "fr": "Température (°C)",
+            "de": "Temperatur (°C)",
+            "es": "Temperatura (°C)"
+          }
+        },
+        {
+          "key": "wait_seconds",
+          "type": "number",
+          "label": {
+            "en": "Seconds before the next one",
+            "fr": "Secondes avant la suivante",
+            "de": "Sekunden bis zur nächsten",
+            "es": "Segundos hasta la siguiente"
+          }
+        }
+      ]
+    },
+    {
+      "key": "refresh",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Read the thermostats now",
+        "fr": "Relever les thermostats maintenant",
+        "de": "Thermostate jetzt abfragen",
+        "es": "Leer los termostatos ahora"
+      },
+      "description": {
+        "en": "Reads every device now instead of waiting for the next reading (once per 15 seconds at most).",
+        "fr": "Relève tous les appareils maintenant au lieu d’attendre le prochain relevé (une fois par 15 secondes au plus).",
+        "de": "Fragt alle Geräte jetzt ab, statt auf die nächste Abfrage zu warten (höchstens alle 15 Sekunden).",
+        "es": "Lee todos los dispositivos ahora en lugar de esperar a la próxima lectura (una vez cada 15 segundos como máximo)."
+      },
+      "outputs": [
+        {
+          "key": "devices",
+          "type": "number",
+          "label": {
+            "en": "Devices",
+            "fr": "Appareils",
+            "de": "Geräte",
+            "es": "Dispositivos"
+          }
+        },
+        {
+          "key": "online",
+          "type": "number",
+          "label": {
+            "en": "Devices online",
+            "fr": "Appareils en ligne",
+            "de": "Geräte online",
+            "es": "Dispositivos en línea"
+          }
+        }
+      ]
+    }
+  ]
+}

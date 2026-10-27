@@ -1,0 +1,581 @@
+{
+  "devices": {
+    "radiator": {
+      "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s",
+      "should_poll": false,
+      "params": ["DANFOSS_MODEL"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:target_temperature",
+          "category": "thermostat",
+          "type": "target-temperature",
+          "unit": "celsius",
+          "min": 5,
+          "max": 35,
+          "step": 0.5,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:mode",
+          "category": "thermostat",
+          "type": "mode",
+          "min": 0,
+          "max": 3,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": [0, 1, 3]
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:preset",
+          "category": "thermostat",
+          "type": "preset",
+          "min": 0,
+          "max": 5,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": [1, 2, 5]
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:operating_state",
+          "category": "thermostat",
+          "type": "operating-state",
+          "min": 0,
+          "max": 2,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:temperature",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:battery",
+          "category": "battery",
+          "type": "integer",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:window",
+          "category": "opening-sensor",
+          "type": "binary",
+          "min": 0,
+          "max": 1,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf7d6d2c1e0a9b8f7j18s:child_lock",
+          "category": "child-lock",
+          "type": "binary",
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": []
+        }
+      ]
+    },
+    "icon2": {
+      "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr",
+      "should_poll": false,
+      "params": ["DANFOSS_MODEL"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:target_temperature",
+          "category": "thermostat",
+          "type": "target-temperature",
+          "unit": "celsius",
+          "min": 5,
+          "max": 35,
+          "step": 0.5,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:mode",
+          "category": "thermostat",
+          "type": "mode",
+          "min": 0,
+          "max": 3,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": [0, 1, 3]
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:preset",
+          "category": "thermostat",
+          "type": "preset",
+          "min": 0,
+          "max": 5,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": [1, 2, 5]
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:operating_state",
+          "category": "thermostat",
+          "type": "operating-state",
+          "min": 0,
+          "max": 2,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:temperature",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:floor_temperature",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 80,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:humidity",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:battery",
+          "category": "battery",
+          "type": "integer",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bfe15e0d9c8b7a6f5fffr:child_lock",
+          "category": "child-lock",
+          "type": "binary",
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": []
+        }
+      ]
+    },
+    "room_sensor": {
+      "external_id": "ext:test-integration:ally:bf33c1a2b3c4d5e6f7rs1",
+      "should_poll": false,
+      "params": ["DANFOSS_MODEL"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:ally:bf33c1a2b3c4d5e6f7rs1:temperature",
+          "category": "temperature-sensor",
+          "type": "decimal",
+          "unit": "celsius",
+          "min": -20,
+          "max": 60,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf33c1a2b3c4d5e6f7rs1:humidity",
+          "category": "humidity-sensor",
+          "type": "decimal",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        },
+        {
+          "external_id": "ext:test-integration:ally:bf33c1a2b3c4d5e6f7rs1:battery",
+          "category": "battery",
+          "type": "integer",
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "read_only": true,
+          "has_feedback": false,
+          "supported_options": []
+        }
+      ]
+    },
+    "icon_rt": {
+      "external_id": "ext:test-integration:ally:bf80b9a848085c5902tiwy",
+      "should_poll": false,
+      "params": ["DANFOSS_MODEL"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:ally:bf80b9a848085c5902tiwy:target_temperature",
+          "category": "thermostat",
+          "type": "target-temperature",
+          "unit": "celsius",
+          "min": 5,
+          "max": 35,
+          "step": 0.5,
+          "read_only": false,
+          "has_feedback": true,
+          "supported_options": []
+        }
+      ]
+    }
+  },
+  "manifest": {
+    "config_schema": [
+      {
+        "key": "intro",
+        "type": "section"
+      },
+      {
+        "key": "consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "consumer_secret",
+        "type": "secret"
+      },
+      {
+        "key": "refresh_minutes",
+        "type": "select"
+      },
+      {
+        "key": "battery_threshold",
+        "type": "number"
+      },
+      {
+        "key": "language",
+        "type": "select"
+      }
+    ],
+    "config_options": {
+      "refresh_minutes": ["1", "2", "5", "10"],
+      "language": ["auto", "en", "fr", "de", "es"]
+    },
+    "actions": ["test_connection"],
+    "widgets": [
+      {
+        "key": "rooms",
+        "settings": ["devices"]
+      },
+      {
+        "key": "status",
+        "settings": []
+      }
+    ],
+    "widget_actions": ["all_at_home", "all_leaving_home", "refresh"],
+    "scene_triggers": [
+      {
+        "key": "window_opened",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "temperature",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "window_closed",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "temperature",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "battery_low",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "battery",
+            "type": "number"
+          },
+          {
+            "key": "threshold",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "device_offline",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "device_online",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "fault_reported",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "fault",
+            "type": "string"
+          },
+          {
+            "key": "error_code",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "mode_changed",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "mode",
+            "options": ["at_home", "leaving_home", "pause", "manual", "holiday"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "device",
+            "type": "string"
+          },
+          {
+            "key": "device_name",
+            "type": "string"
+          },
+          {
+            "key": "mode",
+            "type": "string"
+          },
+          {
+            "key": "previous_mode",
+            "type": "string"
+          },
+          {
+            "key": "target_temperature",
+            "type": "number"
+          }
+        ]
+      }
+    ],
+    "scene_actions": [
+      {
+        "key": "set_mode",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "mode",
+            "options": ["at_home", "leaving_home", "pause", "manual", "holiday"]
+          }
+        ],
+        "outputs": [
+          {
+            "key": "count",
+            "type": "number"
+          },
+          {
+            "key": "failed",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "set_mode_temperature",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "mode",
+            "options": ["current", "at_home", "leaving_home", "pause", "manual", "holiday"]
+          },
+          {
+            "key": "temperature",
+            "options": []
+          }
+        ],
+        "outputs": [
+          {
+            "key": "temperature",
+            "type": "number"
+          },
+          {
+            "key": "mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "set_external_temperature",
+        "fields": [
+          {
+            "key": "device",
+            "options": []
+          },
+          {
+            "key": "temperature",
+            "options": []
+          }
+        ],
+        "outputs": [
+          {
+            "key": "sent",
+            "type": "boolean"
+          },
+          {
+            "key": "temperature",
+            "type": "number"
+          },
+          {
+            "key": "wait_seconds",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "key": "refresh",
+        "fields": [],
+        "outputs": [
+          {
+            "key": "devices",
+            "type": "number"
+          },
+          {
+            "key": "online",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  }
+}
