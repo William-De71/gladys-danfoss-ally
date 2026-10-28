@@ -387,6 +387,22 @@ test('widgets: the rooms with the buttons for the whole home, the connection', a
   assert.equal(unknown.success, false);
 });
 
+test('widgets: a device renamed in Gladys shows under its Gladys name', async () => {
+  const { gladys, device, clock } = await start();
+  const titles = async () =>
+    (
+      await gladys.fake.widgetGet('rooms', { settings: {}, language: 'fr', units: 'metric' })
+    ).data.content.components
+      .find((c) => c.type === 'card-list')
+      .items.map((item) => item.title);
+  clock.now += 60 * 1000;
+  await gladys.fake.deviceUpdated({ ...device(RADIATOR), name: 'Salon' });
+  assert.ok(gladys.fake.widgetRefreshes.includes('rooms'));
+  assert.deepEqual(await titles(), ['Bathroom', 'Bedroom sensor', 'Icon RT 8', 'Salon']);
+  // Discovery keeps the Danfoss name.
+  assert.ok(gladys.fake.discoveredDevices.some((d) => d.name === 'Living room'));
+});
+
 test('refused credentials: shown, retried after 30 minutes or new credentials', async () => {
   const api = fakeApi();
   api.failNext = new CredentialsError('API_KEY_INVALID', 401);

@@ -153,6 +153,11 @@ function createApp(
   const externalIdOf = (id) => idsOf(gladys, id).device;
   const byExternalId = (externalId) =>
     models().find((model) => externalIdOf(model.id) === externalId) ?? null;
+  // The name the user gave the device in Gladys wins over the Danfoss one
+  // (Discovery keeps offering the Danfoss name).
+  const nameOf = (model) =>
+    (gladys.devices ?? []).find((device) => device.external_id === externalIdOf(model.id))?.name ||
+    deviceName(model);
 
   // --- Publishing ---------------------------------------------------------------
 
@@ -311,7 +316,7 @@ function createApp(
       if (expected && now() >= expected.until) expectedModes.delete(id);
       const result = detectEvents(state.snapshot(id), model, {
         device: externalIdOf(id),
-        name: deviceName(model),
+        name: nameOf(model),
         threshold: config.batteryThreshold,
         target: targetTemperature(model),
         isExpectedMode: (mode) => expectedModes.get(id)?.mode === mode,
@@ -483,7 +488,7 @@ function createApp(
   function setMode(model, mode) {
     if (!SETTABLE_MODES.includes(mode)) throw new Error(`Unknown mode ${mode}`);
     if (!hasModeSetpoints(model)) {
-      throw new Error(`${deviceName(model)} does not take the Danfoss modes`);
+      throw new Error(`${nameOf(model)} does not take the Danfoss modes`);
     }
     return command(model, modeCommands(mode, date()));
   }
@@ -523,18 +528,16 @@ function createApp(
     const code = mode ? MODE_TO_SETPOINT_CODE[mode] : setpointCode(model);
     if (!code || !(code in model.setpoints)) {
       throw new Error(
-        mode
-          ? `${deviceName(model)} has no ${mode} setpoint`
-          : `${deviceName(model)} has no setpoint`,
+        mode ? `${nameOf(model)} has no ${mode} setpoint` : `${nameOf(model)} has no setpoint`,
       );
     }
     const tenths = encodeSetpoint(celsius);
     const celsiusWritten = tenths / 10;
     if (model.lowerTemp !== null && celsiusWritten < model.lowerTemp) {
-      throw new RangeError(`The lowest setpoint of ${deviceName(model)} is ${model.lowerTemp} °C`);
+      throw new RangeError(`The lowest setpoint of ${nameOf(model)} is ${model.lowerTemp} °C`);
     }
     if (model.upperTemp !== null && celsiusWritten > model.upperTemp) {
-      throw new RangeError(`The highest setpoint of ${deviceName(model)} is ${model.upperTemp} °C`);
+      throw new RangeError(`The highest setpoint of ${nameOf(model)} is ${model.upperTemp} °C`);
     }
     await command(model, [{ code, value: tenths }]);
     return celsiusWritten;
@@ -602,7 +605,7 @@ function createApp(
     const model = requireDevice(fields.device);
     if (!model.acceptsExternal) {
       throw new Error(
-        `${deviceName(model)} takes no external temperature (Danfoss Ally radiator thermostats only)`,
+        `${nameOf(model)} takes no external temperature (Danfoss Ally radiator thermostats only)`,
       );
     }
     const temperature = parseExternalTemperature(fields.temperature);
@@ -652,7 +655,7 @@ function createApp(
       const list = models()
         .map((model) =>
           t(isPublishable(model) ? 'testDevice' : 'testInfrastructure', language, {
-            name: deviceName(model),
+            name: nameOf(model),
             model: model.model || '?',
             state: t(model.online ? 'online' : 'offline', language),
             features: featuresOf(model).length,
@@ -683,14 +686,14 @@ function createApp(
   gladys.onWidgetGet(WIDGETS.ROOMS, async ({ settings = {}, language: lang, units } = {}) => {
     rememberLanguage(lang);
     const wanted = Array.isArray(settings.devices) ? settings.devices : [];
-    let list = publishable().sort((a, b) => deviceName(a).localeCompare(deviceName(b)));
+    let list = publishable().sort((a, b) => nameOf(a).localeCompare(nameOf(b)));
     if (wanted.length > 0) {
       list = list.filter((model) => wanted.includes(externalIdOf(model.id)));
     }
     return buildRoomsWidget({
       devices: list.slice(0, MAX_ITEMS).map((model) => ({
         model,
-        name: deviceName(model),
+        name: nameOf(model),
         batteryLow: Boolean(state.snapshot(model.id)?.batteryLow),
       })),
       hidden: Math.max(0, list.length - MAX_ITEMS),
@@ -769,6 +772,8 @@ function createApp(
   gladys.onDeviceUpdated(async (device) => {
     const model = byExternalId(device.external_id);
     if (model) await publishStates([model]);
+    // A device renamed in Gladys shows under its new name.
+    refreshWidgets();
   });
 
   gladys.onConfigUpdated(async (raw) => {
