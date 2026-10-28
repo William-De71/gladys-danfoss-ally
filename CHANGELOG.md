@@ -5,6 +5,12 @@ follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/). This file is generated at
 each release from the Conventional Commits: do not edit it by hand.
 
+## [0.1.1] - 2026-10-28
+
+### Fixed
+
+- show the names given in Gladys in the widgets and scene variables ([861a97b](https://github.com/William-De71/gladys-danfoss-ally/commit/861a97b6094ffc12e92b402357102f94594302a0))
+
 ## [0.1.0] - 2026-10-27
 
 ### Added
@@ -17,4 +23,5 @@ each release from the Conventional Commits: do not edit it by hand.
 - Dashboard widgets: the heating rooms (temperature, setpoint, mode, window, battery, details on tap, "Home mode" and "Away mode" for the whole home) and the connection to the Danfoss Ally API.
 - English, French, German and Spanish everywhere: settings, devices, widgets, scenes and documentation.
 
+[0.1.1]: https://github.com/William-De71/gladys-danfoss-ally/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/William-De71/gladys-danfoss-ally/releases/tag/v0.1.0

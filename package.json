@@ -1,6 +1,6 @@
 {
   "name": "gladys-danfoss-ally",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "External Gladys Assistant integration for Danfoss Ally radiator thermostats, room sensors and Icon room thermostats through the official Danfoss Ally API: setpoint, heating mode, temperatures, window, battery, child lock, scene triggers and actions, dashboard widgets.",
   "homepage": "https://github.com/William-De71/gladys-danfoss-ally",
